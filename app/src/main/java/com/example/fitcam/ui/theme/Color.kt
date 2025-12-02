@@ -2,10 +2,12 @@ package com.example.fitcam.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+// Brand Palette
+val FitCamBlue = Color(0xFF134686)   // Primary
+val FitCamRed = Color(0xFFED3F27)    // Secondary / Error / Stop
+val FitCamYellow = Color(0xFFFEB21A) // Highlight / Accent
+val FitCamCream = Color(0xFFFDF4E3)  // Background
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+// Variations
+val FitCamDarkBlue = Color(0xFF0D3262)
+val FitCamLightRed = Color(0xFFFF6B57)
