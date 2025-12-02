@@ -104,4 +104,10 @@ dependencies {
 
     // Google Generative AI (Gemini)
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+
+    // Firebase Storage (Gunakan BOM, tanpa versi)
+    implementation(libs.firebase.storage)
+
+    // Coil (Library pemuat gambar terbaik untuk Compose)
+    implementation("io.coil-kt:coil-compose:2.6.0")
 }
