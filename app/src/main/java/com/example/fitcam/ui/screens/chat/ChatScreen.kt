@@ -31,7 +31,6 @@ fun ChatScreen(viewModel: ChatViewModel = viewModel()) {
     var inputText by remember { mutableStateOf("") }
     val listState = rememberLazyListState()
 
-    // Auto-scroll to bottom when new message arrives
     LaunchedEffect(messages.size) {
         listState.animateScrollToItem(messages.size - 1)
     }
@@ -41,7 +40,6 @@ fun ChatScreen(viewModel: ChatViewModel = viewModel()) {
             .fillMaxSize()
             .background(FitCamCream)
     ) {
-        // --- HEADER ---
         Surface(shadowElevation = 4.dp, color = FitCamCream) {
             Row(
                 modifier = Modifier
@@ -66,7 +64,6 @@ fun ChatScreen(viewModel: ChatViewModel = viewModel()) {
             }
         }
 
-        // --- CHAT LIST ---
         LazyColumn(
             state = listState,
             modifier = Modifier
@@ -86,7 +83,6 @@ fun ChatScreen(viewModel: ChatViewModel = viewModel()) {
             }
         }
 
-        // --- INPUT AREA ---
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -160,32 +156,26 @@ fun MarkdownText(
     fontSize: androidx.compose.ui.unit.TextUnit = 15.sp
 ) {
     val styledText = buildAnnotatedString {
-        // 1. Split berdasarkan baris untuk menangani List Item (*)
         val lines = text.split("\n")
         
         lines.forEachIndexed { index, line ->
             var currentLine = line.trim()
             
-            // Deteksi Bullet Point (* atau - di awal kalimat)
             if (currentLine.startsWith("* ") || currentLine.startsWith("- ")) {
-                append("•  ") // Ganti simbol markdown dengan Bullet asli yang rapi
-                currentLine = currentLine.substring(2) // Hapus "* "
+                append("•  ")
+                currentLine = currentLine.substring(2)
             } else if (index > 0) {
-                append("\n") // Tambah enter jika bukan baris pertama
+                append("\n")
             }
 
-            // 2. Deteksi BOLD (**teks**)
-            // Kita split berdasarkan tanda "**"
             val parts = currentLine.split("**")
             
             parts.forEachIndexed { partIndex, part ->
-                // Jika index ganjil (1, 3, 5...), itu adalah teks di dalam **...** (BOLD)
                 if (partIndex % 2 == 1) {
                     withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
                         append(part)
                     }
                 } else {
-                    // Teks biasa
                     append(part)
                 }
             }
@@ -197,6 +187,6 @@ fun MarkdownText(
         color = color,
         modifier = modifier,
         fontSize = fontSize,
-        lineHeight = 22.sp // Memberi jarak antar baris agar lebih enak dibaca
+        lineHeight = 22.sp
     )
 }

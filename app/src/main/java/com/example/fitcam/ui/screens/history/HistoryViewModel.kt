@@ -16,21 +16,18 @@ import java.util.Locale
 class HistoryViewModel(application: Application) : AndroidViewModel(application) {
     private val repository = WorkoutRepository()
 
-    // Raw data from DB
     private var allSessions = listOf<WorkoutSession>()
 
-    // Filtered data for UI
     private val _uiSessions = MutableStateFlow<List<WorkoutSession>>(emptyList())
     val uiSessions: StateFlow<List<WorkoutSession>> = _uiSessions.asStateFlow()
 
     private val _isLoading = MutableStateFlow(true)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
-    // Filters
-    private val _selectedType = MutableStateFlow("All") // "All", "PUSH UP", etc.
+    private val _selectedType = MutableStateFlow("All")
     val selectedType: StateFlow<String> = _selectedType.asStateFlow()
 
-    private val _selectedDate = MutableStateFlow<Long?>(null) // Null = All time
+    private val _selectedDate = MutableStateFlow<Long?>(null)
     val selectedDate: StateFlow<Long?> = _selectedDate.asStateFlow()
 
     init {
@@ -59,12 +56,12 @@ class HistoryViewModel(application: Application) : AndroidViewModel(application)
     private fun applyFilters() {
         var result = allSessions
 
-        // 1. Filter by Type
+        // Filter by Type
         if (_selectedType.value != "All") {
             result = result.filter { it.type.equals(_selectedType.value, ignoreCase = true) }
         }
 
-        // 2. Filter by Date
+        // Filter by Date
         _selectedDate.value?.let { filterDate ->
             val formatter = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
             val filterString = formatter.format(Date(filterDate))
