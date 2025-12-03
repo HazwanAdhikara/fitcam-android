@@ -20,8 +20,8 @@
 
 |          Workout Mode           |           AI Coach            |   Community   |
 | :-----------------------------: | :---------------------------: | :-----------: |
-| <img src="./img/1-workout.png"> | <img src="./img/3-coach.png"> | _Coming Soon_ |
-| <img src="./img/2-workout.png"> | <img src="./img/4-coach.png"> | _Coming Soon_ |
+| <img src="./img/1-workout.png"> | <img src="./img/3-coach.png"> | <img src="./img/5-community.jpg"> |
+| <img src="./img/2-workout.png"> | <img src="./img/4-coach.png"> | <img src="./img/6-community.jpg"> |
 
 ---
 
